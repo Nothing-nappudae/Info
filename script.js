@@ -84,46 +84,110 @@ function typeSeriousLine(el) {
 }
 
 
-// === CUSTOM GLOWING CURSOR ===
-const cursor = document.getElementById("cursor");
-let mouseX = 0, mouseY = 0;
-let currentX = 0, currentY = 0;
+// === Custom Cursor ===
+(() => {
+    const cursor = document.getElementById("cursor");
+    if (!cursor) return;
 
-// smooth lerp for fluid motion
-function animateCursor() {
-    currentX += (mouseX - currentX) * 0.15;
-    currentY += (mouseY - currentY) * 0.15;
-    cursor.style.transform = `translate(${currentX}px, ${currentY}px)`;
-    requestAnimationFrame(animateCursor);
-}
-requestAnimationFrame(animateCursor);
-
-document.addEventListener("mousemove", e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-// hover effects
-document.querySelectorAll("button, a, .game").forEach(el => {
-    el.addEventListener("mouseenter", () => {
-        cursor.style.width = "40px";
-        cursor.style.height = "40px";
-        cursor.style.background = "radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 70%)";
-    });
-    el.addEventListener("mouseleave", () => {
-        cursor.style.width = "18px";
-        cursor.style.height = "18px";
-        cursor.style.background = "radial-gradient(circle, rgba(198, 210, 210, 0.8), transparent 70%)";
-    });
-});
-// Animated favicon swapping
-const icons = ["icon1.(1)png", "icon2 (1).png"]; // add more if you want
-let x = 0;
-
-setInterval(() => {
-    const favicon = document.querySelector("link[rel='icon']");
-    if (favicon) {
-        favicon.href = icons[x % icons.length];
-        x++;
+    // Make sure it's a direct child of <body>
+    if (cursor.parentElement !== document.body) {
+        document.body.appendChild(cursor);
     }
-}, 700); // changes every 0.7 seconds
+
+    // Move cursor with perfect alignment
+    window.addEventListener("pointermove", (e) => {
+        cursor.style.opacity = "1";
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    }, { passive: true });
+
+    // Hide cursor when mouse leaves window
+    window.addEventListener("pointerleave", () => {
+        cursor.style.opacity = "0";
+    });
+})();
+
+// === Smooth-fade animated favicon ===
+// Requirements: images/icon1.png & images/icon2.png (32x32 recommended)
+(() => {
+    const icons = ["images/icon1.png", "images/icon2.png"];
+    const swapInterval = 2500;   // total time each icon is shown (ms)
+    const fadeDuration = 800;    // crossfade time (ms)
+
+    const link = document.querySelector("link[rel='icon']") || (() => {
+        const l = document.createElement("link");
+        l.rel = "icon";
+        document.head.appendChild(l);
+        return l;
+    })();
+
+    // preload images
+    const imgs = icons.map(src => {
+        const img = new Image();
+        img.crossOrigin = "anonymous"; // harmless if same-origin; helps if remote
+        img.src = src;
+        return img;
+    });
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const SIZE = 32; // favicon size
+    canvas.width = SIZE;
+    canvas.height = SIZE;
+
+    let idx = 0;
+    let startTime = performance.now();
+    let phase = "hold"; // "hold" or "fade"
+
+    function drawFavicon(a, b, t) {
+        // t in [0..1] = blend factor
+        ctx.clearRect(0, 0, SIZE, SIZE);
+        // draw A at opacity (1 - t)
+        ctx.globalAlpha = 1 - t;
+        ctx.drawImage(a, 0, 0, SIZE, SIZE);
+        // draw B at opacity t
+        ctx.globalAlpha = t;
+        ctx.drawImage(b, 0, 0, SIZE, SIZE);
+        ctx.globalAlpha = 1;
+        link.href = canvas.toDataURL("image/png");
+    }
+
+    function tick(now) {
+        // if images not ready yet, keep trying
+        if (!imgs[0].complete || !imgs[1].complete) {
+            requestAnimationFrame(tick);
+            return;
+        }
+
+        const elapsed = now - startTime;
+
+        if (phase === "hold") {
+            // show current icon without blending
+            drawFavicon(imgs[idx], imgs[idx], 0);
+            if (elapsed >= swapInterval - fadeDuration) {
+                // start fading to next icon
+                phase = "fade";
+                startTime = now;
+            }
+        } else {
+            // crossfade
+            const t = Math.min(1, (now - startTime) / fadeDuration);
+            const next = (idx + 1) % imgs.length;
+            drawFavicon(imgs[idx], imgs[next], t);
+            if (t >= 1) {
+                // switch to next icon and hold again
+                idx = next;
+                phase = "hold";
+                startTime = now;
+            }
+        }
+
+        requestAnimationFrame(tick);
+    }
+
+    // initial icon (in case nothing is set)
+    imgs[0].addEventListener("load", () => {
+        drawFavicon(imgs[0], imgs[0], 0);
+    });
+
+    requestAnimationFrame(tick);
+})();
