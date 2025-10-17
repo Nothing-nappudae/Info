@@ -277,3 +277,33 @@ h2 {
         grid-template-columns: 1fr;
     }
 }
+
+.more-info {
+    margin-top: 8px;
+    color: #b7b7b7;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 0 12px;
+    /* start collapsed: zero vertical padding */
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.05);
+    max-height: 0;
+    /* collapsed */
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 300ms ease, opacity 300ms ease, padding 300ms ease;
+}
+
+.more-info.open {
+    max-height: 300px;
+    /* enough for your text */
+    opacity: 1;
+    padding: 10px 12px;
+    /* add vertical padding when open */
+}
+
+.more-info-btn {
+    margin-top: 10px;
+}

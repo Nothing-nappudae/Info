@@ -191,3 +191,17 @@ function typeSeriousLine(el) {
 
     requestAnimationFrame(tick);
 })();
+// Toggle "More Info" for any project card (works for many cards)
+document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".more-info-btn");
+    if (!btn) return;
+
+    const card = btn.closest(".project");
+    if (!card) return;
+
+    const info = card.querySelector(".more-info");
+    if (!info) return;
+
+    const isOpen = info.classList.toggle("open");
+    btn.textContent = isOpen ? "Less Info" : "More Info";
+});
