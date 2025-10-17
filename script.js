@@ -117,7 +117,7 @@ document.querySelectorAll("button, a, .game").forEach(el => {
     });
 });
 // Animated favicon swapping
-const icons = ["icon1.png", "icon2.png"]; // add more if you want
+const icons = ["icon1.(1)png", "icon2 (1).png"]; // add more if you want
 let x = 0;
 
 setInterval(() => {
