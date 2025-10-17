@@ -108,11 +108,11 @@ document.querySelectorAll("button, a, .game").forEach(el => {
     el.addEventListener("mouseenter", () => {
         cursor.style.width = "40px";
         cursor.style.height = "40px";
-        cursor.style.background = "radial-gradient(circle, rgba(0,255,255,0.9), transparent 70%)";
+        cursor.style.background = "radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 70%)";
     });
     el.addEventListener("mouseleave", () => {
         cursor.style.width = "18px";
         cursor.style.height = "18px";
-        cursor.style.background = "radial-gradient(circle, rgba(0,255,255,0.8), transparent 70%)";
+        cursor.style.background = "radial-gradient(circle, rgba(198, 210, 210, 0.8), transparent 70%)";
     });
 });
