@@ -118,12 +118,12 @@ document.querySelectorAll("button, a, .game").forEach(el => {
 });
 // Animated favicon swapping
 const icons = ["icon1.png", "icon2.png"]; // add more if you want
-let i2 = 0;
+let x = 0;
 
 setInterval(() => {
     const favicon = document.querySelector("link[rel='icon']");
     if (favicon) {
-        favicon.href = icons[i2 % icons.length];
-        i2++;
+        favicon.href = icons[x % icons.length];
+        x++;
     }
 }, 700); // changes every 0.7 seconds
