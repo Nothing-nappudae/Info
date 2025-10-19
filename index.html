@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sai’s Page</title>
@@ -13,214 +12,267 @@
     <!-- Preload the alternate icon so swaps are instant -->
     <link rel="preload" as="image" href="images/icon2.png" />
 
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=4" />
     <script src="script.js?v=10" defer></script>
+  </head>
 
-
-</head>
-
-
-<body>
-
+  <body>
     <!-- === FUN MODE === -->
     <div class="container" id="funMode">
-        <h1 class="typewriter" id="funIntro"></h1>
-        <p id="subtext"></p>
+      <h1 class="typewriter" id="funIntro"></h1>
+      <p id="subtext"></p>
 
-        <div class="controls">
-            <button id="seriousBtn">Serious Mode ⚡</button>
-            <button id="toggleHobbies">🎮 Hobbies. Hop On some if you can!</button>
+      <div class="controls">
+        <button id="seriousBtn">Serious Mode ⚡</button>
+        <button id="toggleHobbies">🎮 Hobbies. Hop On some if you can!</button>
+      </div>
+
+      <div id="hobbiesBox">
+        <div class="games">
+          <div class="game">
+            <a
+              href="https://playvalorant.com/en-gb/"
+              target="_blank"
+              class="game"
+            >
+              <img
+                src="https://www.riotgames.com/darkroom/1440/d0807e131a84f2e42c7a303bda672789:3d02afa7e0bfb75f645d97467765b24c/valorant-offwhitelaunch-keyart.jpg"
+                alt="Valorant"
+              />
+              <div>Valorant</div>
+            </a>
+          </div>
+
+          <div class="game">
+            <a href="https://www.chess.com" target="_blank">
+              <img src="images/chesspiece.jpg" alt="Chess" />
+              <div>Chess</div>
+            </a>
+          </div>
+
+          <div class="game">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/588/588303.png"
+              alt="Cs2"
+            />
+            <div>Cs2</div>
+          </div>
+
+          <div class="game">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/6423/6423010.png"
+              alt="TFT"
+            />
+            <div>Others</div>
+          </div>
         </div>
-
-        <div id="hobbiesBox">
-            <div class="games">
-                <div class="game">
-                    <a href="https://playvalorant.com/en-gb/" target="_blank" class="game">
-                        <img src="https://www.riotgames.com/darkroom/1440/d0807e131a84f2e42c7a303bda672789:3d02afa7e0bfb75f645d97467765b24c/valorant-offwhitelaunch-keyart.jpg"
-                            alt="Valorant" />
-                        <div>Valorant</div>
-                    </a>
-
-                </div>
-                <div class="game">
-                    <a href="https://www.chess.com" target="_blank">
-                        <img img src="images\chesspiece.jpg" alt="Chess" />
-                        <div>Chess</div>
-                    </a>
-                </div>
-
-                <div class="game">
-                    <img src="https://cdn-icons-png.flaticon.com/512/588/588303.png" alt="Cs2" />
-                    <div>Cs2</div>
-                </div>
-                <div class="game">
-                    <img src="https://cdn-icons-png.flaticon.com/512/6423/6423010.png" alt="TFT" />
-                    <div>Others</div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
     <!-- /FUN MODE -->
 
     <!-- === SERIOUS MODE === -->
-    <div class="container" id="seriousMode" style="display:none;">
-        <h1 class="typewriter" id="seriousIntro"></h1>
+    <div class="container" id="seriousMode" style="display: none">
+      <h1 class="typewriter" id="seriousIntro"></h1>
 
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-list">
-                <div class="skill">Python</div>
-                <div class="skill">C++</div>
-                <div class="skill">Arduino</div>
-                <div class="skill">Git</div>
-            </div>
-        </section>
-
-        <section id="learning">
-            <h2>Learning</h2>
-            <div class="skills-list">
-                <div class="skill">AI/ML</div>
-                <div class="skill">Robotics</div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project">
-                    <h3>Discord Study Bot</h3>
-                    <p>Pomodoro and reminders.</p>
-                    <a href="#" target="_blank">View Repo →</a>
-                </div>
-                <div class="project">
-                    <h3>Valorant Aim Logger</h3>
-                    <p>Logs aim drills.</p>
-                    <a href="#" target="_blank">View Repo →</a>
-                </div>
-                <div class="project">
-                    <h3>Flapshell Monitor</h3>
-                    <p>Arduino temp sensor.</p>
-                    <a href="#" target="_blank">View Repo →</a>
-                </div>
-                <div class="project">
-                    <h3>Finance Tracker</h3>
-                    <p>Personal Finance Tracking bot.</p>
-                    <a href="#" target="_blank">View Repo →</a>
-                </div>
-                <div class="project">
-                    <h3>Personal Ai Notes Reader</h3>
-                    <p>A an SLM that I Trained on my physics notes for Homework Support.
-
-                    </p>
-
-                    <!-- Hidden "More Info" section -->
-                    <div class="more-info">
-                        <p>
-                            I made Eriski because I was tired of AI giving me copy-pasted textbook answers.
-                            So I trained my own — one that actually reads my physics notes and talks back like a study
-                            partner.
-                            It runs offline using Ollama + LangChain + ChromaDB, and it can explain derivations, laws,
-                            and even my own messy thought process from my notes.
-
-                        </p>
-                    </div>
-
-                    <!-- Buttons container -->
-                    <div class="project-buttons">
-                        <button class="more-info-btn" type="button">More Info</button>
-                        <a href="https://github.com/Nothing-nappudae/Eriski" target="_blank" class="view-repo-btn">
-                            View Repo →
-                        </a>
-                    </div>
-
-
-                </div>
-                <div class="project">
-                    <h3>Quest Manager Discord Bot</h3>
-                    <p>A Quest Bot that manages quests and tracks the progress of server members.</p>
-
-                    <!-- Hidden "More Info" section -->
-                    <div class="more-info">
-                        <p>
-                            This was one of my first real projects — the one that got me hooked on building.
-                            I started using <strong>JSON</strong> files to store quest data before I even knew
-                            what a real database was. That experience taught me how data persistence works,
-                            how to organize information efficiently, and how APIs tie everything together.
-                        </p>
-                    </div>
-
-                    <!-- Buttons container -->
-                    <div class="project-buttons">
-                        <button class="more-info-btn" type="button">More Info</button>
-                        <a href="https://github.com/Nothing-nappudae/Quest-Tracker" target="_blank"
-                            class="view-repo-btn">
-                            View Repo
-                        </a>
-                    </div>
-
-                <div class="project">
-                    <h3>Pendula</h3>
-                    <p>An interactive Python simulator for visualizing Newtonian motion single and double pendulums built with NumPy and Matplotlib.</p>
-
-                    <!-- Hidden "More Info" section -->
-                    <div class="more-info">
-                        <p> Pendula is an Interactive Python-based pendulum Simulation for single and double pendulums that uses real-time numerical integrations such as Runge-Kutta and energy analysis.</p>
-                        
-                    </div>
-
-                    <!-- Buttons container -->
-                    <div class="project-buttons">
-                        <button class="more-info-btn" type="button">More Info</button>
-                        <a href="https://github.com/Nothing-nappudae/Pendula" target="_blank"
-                            class="view-repo-btn">
-                            View Repo
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project">
-                    <h3>More On way</h3>
-                    <p>Links and repositories will be added shortly</p>
-                    <a href="#" target="_blank">View Repo →</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="current">
-            <h2>Current Project</h2>
-            <p>Currently working on: AI Assistant.</p>
-        </section>
-
-        <!-- Currently Reading ONLY in Serious Mode -->
-        <section id="reading">
-            <h2>Currently Reading</h2>
-            <div class="project-grid">
-                <a href="https://sehyun-lee288.github.io/projects/gcc/" class="project small-project" target="_blank"
-                    rel="noopener noreferrer">
-                    <h3>Internal Trait of Deep Neural Network</h3>
-                    <p>Paper by the Statistical AI Lab @ KAIST, exploring interpretability of neural networks.</p>
-                </a>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>
-                Email: <a href="mailto:nothingnapuddae@gmail.com">nothingnapuddae@gmail.com</a> ·
-                <a href="https://github.com/Nothing-nappudae" target="_blank" rel="noopener noreferrer">GitHub</a>
-
-                <a href="https://discord.gg/7aYfvk7JWx" target="_blank" rel="noopener noreferrer">Discord</a>
-            </p>
-        </section>
-
-        <div class="controls">
-            <button id="backToFun">Back to Fun 😎</button>
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-list">
+          <div class="skill">Python</div>
+          <div class="skill">C++</div>
+          <div class="skill">Arduino</div>
+          <div class="skill">Git</div>
         </div>
+      </section>
 
-        <!-- /SERIOUS MODE -->
+      <section id="learning">
+        <h2>Learning</h2>
+        <div class="skills-list">
+          <div class="skill">AI/ML</div>
+          <div class="skill">Robotics</div>
+        </div>
+      </section>
 
-        <div id="cursor"></div>
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <div class="project">
+            <h3>Discord Study Bot</h3>
+            <p>Pomodoro and reminders.</p>
+            <a href="#" target="_blank">View Repo →</a>
+          </div>
 
-</body>
+          <div class="project">
+            <h3>Valorant Aim Logger</h3>
+            <p>Logs aim drills.</p>
+            <a href="#" target="_blank">View Repo →</a>
+          </div>
 
+          <div class="project">
+            <h3>Flapshell Monitor</h3>
+            <p>Arduino temp sensor.</p>
+            <a href="#" target="_blank">View Repo →</a>
+          </div>
+
+          <div class="project">
+            <h3>Finance Tracker</h3>
+            <p>Personal Finance Tracking bot.</p>
+            <a href="#" target="_blank">View Repo →</a>
+          </div>
+
+          <div class="project">
+            <h3>Personal AI Notes Reader</h3>
+            <p>
+              A an SLM that I Trained on my physics notes for Homework Support.
+            </p>
+
+            <!-- Hidden "More Info" section -->
+            <div class="more-info">
+              <p>
+                I made Eriski because I was tired of AI giving me copy-pasted
+                textbook answers. So I trained my own — one that actually reads
+                my physics notes and talks back like a study partner. It runs
+                offline using Ollama + LangChain + ChromaDB, and it can explain
+                derivations, laws, and even my own messy thought process from my
+                notes.
+              </p>
+            </div>
+
+            <!-- Buttons container -->
+            <div class="project-buttons">
+              <button class="more-info-btn" type="button">More Info</button>
+              <a
+                href="https://github.com/Nothing-nappudae/Eriski"
+                target="_blank"
+                class="view-repo-btn"
+              >
+                View Repo →
+              </a>
+            </div>
+          </div>
+
+          <div class="project">
+            <h3>Quest Manager Discord Bot</h3>
+            <p>
+              A Quest Bot that manages quests and tracks the progress of server
+              members.
+            </p>
+
+            <!-- Hidden "More Info" section -->
+            <div class="more-info">
+              <p>
+                This was one of my first real projects — the one that got me
+                hooked on building. I started using <strong>JSON</strong> files
+                to store quest data before I even knew what a real database was.
+                That experience taught me how data persistence works, how to
+                organize information efficiently, and how APIs tie everything
+                together.
+              </p>
+            </div>
+
+            <!-- Buttons container -->
+            <div class="project-buttons">
+              <button class="more-info-btn" type="button">More Info</button>
+              <a
+                href="https://github.com/Nothing-nappudae/Quest-Tracker"
+                target="_blank"
+                class="view-repo-btn"
+              >
+                View Repo
+              </a>
+            </div>
+          </div>
+
+          <div class="project">
+            <h3>Pendula</h3>
+            <p>
+              An interactive Python simulator for visualizing Newtonian motion
+              single and double pendulums built with NumPy and Matplotlib.
+            </p>
+
+            <!-- Hidden "More Info" section -->
+            <div class="more-info">
+              <p>
+                Pendula is an Interactive Python-based pendulum Simulation for
+                single and double pendulums that uses real-time numerical
+                integrations such as Runge-Kutta and energy analysis.
+              </p>
+            </div>
+
+            <!-- Buttons container -->
+            <div class="project-buttons">
+              <button class="more-info-btn" type="button">More Info</button>
+              <a
+                href="https://github.com/Nothing-nappudae/Pendula"
+                target="_blank"
+                class="view-repo-btn"
+              >
+                View Repo
+              </a>
+            </div>
+          </div>
+
+          <div class="project">
+            <h3>More On way</h3>
+            <p>Links and repositories will be added shortly</p>
+            <a href="#" target="_blank">View Repo →</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="current">
+        <h2>Current Project</h2>
+        <p>Currently working on: AI Assistant.</p>
+      </section>
+
+      <!-- Currently Reading ONLY in Serious Mode -->
+      <section id="reading">
+        <h2>Currently Reading</h2>
+        <div class="project-grid">
+          <a
+            href="https://sehyun-lee288.github.io/projects/gcc/"
+            class="project small-project"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h3>Internal Trait of Deep Neural Network</h3>
+            <p>
+              Paper by the Statistical AI Lab @ KAIST, exploring
+              interpretability of neural networks.
+            </p>
+          </a>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Email:
+          <a href="mailto:nothingnapuddae@gmail.com"
+            >nothingnapuddae@gmail.com</a
+          >
+          ·
+          <a
+            href="https://github.com/Nothing-nappudae"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          ·
+          <a
+            href="https://discord.gg/7aYfvk7JWx"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Discord</a
+          >
+        </p>
+      </section>
+
+      <div class="controls">
+        <button id="backToFun">Back to Fun 😎</button>
+      </div>
+    </div>
+    <!-- /SERIOUS MODE -->
+
+    <div id="cursor"></div>
+  </body>
 </html>
